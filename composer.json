@@ -1,0 +1,50 @@
+{
+    "name": "rentalmanager/amenities",
+    "type": "library",
+    "description": "Rental Manager Amenities package which propels the basic system where you can manage properties for rent.",
+    "keywords": [
+        "Rentbits",
+        "Amenities"
+    ],
+    "homepage": "https://gitlab.com/rentalmanager/amenities",
+    "license": "proprietary",
+    "authors": [
+        {
+            "name": "Rentbits",
+            "email": "support@rentbits.com",
+            "homepage": "https://rentbits.com",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php" : "^7.1.3",
+        "rentalmanager/base": "*",
+        "kkszymanowski/traitor": "^0.2.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit" : ">=5.4.3",
+        "squizlabs/php_codesniffer": "^2.3"
+    },
+    "autoload": {
+        "psr-4": {
+            "RentalManager\\Amenities\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "RentalManager\\Amenities\\Tests\\": "tests/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "RentalManager\\Amenities\\AmenitiesServiceProvider"
+            ]
+        }
+    },
+    "prefer-stable": true,
+    "minimum-stability": "dev",
+    "config": {
+        "sort-packages": true
+    }
+}
