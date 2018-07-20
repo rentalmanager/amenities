@@ -99,7 +99,7 @@ return [
             ]
         ],
         [
-            'name' => 'Concierge',
+            'name' => 'Concierge Service',
             'type' => 'community',
             'group' => 'community-services',
             'standardization' => [
@@ -315,7 +315,7 @@ return [
             ]
         ],
         [
-            'name' => 'Package Receiving',
+            'name' => 'Package Service',
             'type' => 'community',
             'group' => 'other',
             'standardization' => [

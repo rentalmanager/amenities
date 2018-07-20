@@ -62,10 +62,13 @@ trait Amenitable
      */
     public function attachAmenities( $amenities = [])
     {
+
         foreach ( $amenities as $amenity )
         {
             $this->attachAmenity($amenity);
         }
+
+
         return $this;
     }
 
@@ -95,7 +98,7 @@ trait Amenitable
      * @param bool $detaching
      * @return $this
      */
-    public function syncAmenities($amenities, $detaching = true)
+    public function syncAmenities($amenities = [], $detaching = true)
     {
         return $this->syncAmenitableModels('amenities', $amenities, $detaching);
     }
@@ -106,7 +109,7 @@ trait Amenitable
      * @param $amenities
      * @return $this
      */
-    public function syncAmenitiesWithoutDetaching($amenities)
+    public function syncAmenitiesWithoutDetaching($amenities = [])
     {
         return $this->syncAmenities($amenities, false);
     }
@@ -146,7 +149,7 @@ trait Amenitable
 
         $attributes = [];
         $objectType = Str::singular($relationship);
-        $object = RelationHelper::getIdFor($object, $objectType);
+        $object = RelationHelper::getIdFor($object, $objectType, 'amenities');
 
         $this->$relationship()->attach(
             $object,
@@ -173,7 +176,7 @@ trait Amenitable
         $objectType = Str::singular($relationship);
         $relationshipQuery = $this->$relationship();
 
-        $object = RelationHelper::getIdFor($object, $objectType);
+        $object = RelationHelper::getIdFor($object, $objectType, 'amenities');
 
         $relationshipQuery->detach($object);
 
@@ -200,7 +203,7 @@ trait Amenitable
 
         foreach ( $objects as $object )
         {
-            $mappedObjects[] = RelationHelper::getIdFor($object, $objectType);
+            $mappedObjects[] = RelationHelper::getIdFor($object, $objectType, 'amenities');
         }
 
         $relationshipToSync = $this->$relationship();

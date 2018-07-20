@@ -25,7 +25,7 @@ You must be approved by admin into the Gitlab account so your public key needs t
 After that just simply add the following line to the composer required packages
 
 ``` json
-"rentalmanager/amenities": "1.0.*"
+"rentalmanager/amenities": "1.1.*"
 ```
 
 After that run the 

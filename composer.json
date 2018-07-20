@@ -18,15 +18,8 @@
     ],
     "require": {
         "php" : "^7.1.3",
-        "rentalmanager/base": "1.0.*",
         "kkszymanowski/traitor": "^0.2.0"
     },
-    "repositories": [
-        {
-            "type": "git",
-            "url": "git@gitlab.com:rentalmanager/base.git"
-        }
-    ],
     "require-dev": {
         "phpunit/phpunit" : ">=5.4.3",
         "squizlabs/php_codesniffer": "^2.3"
