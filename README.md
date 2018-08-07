@@ -9,29 +9,8 @@ It includes all migrations, models and relations to run the rental system.
 
 Via Composer
 
-Since this package needs to be private, first you need to add the following line to the composer.json file:
-
-``` json
-"repositories": [
-        {
-            "type": "git",
-            "url": "git@gitlab.com:rentalmanager/amenities.git"
-        }
-    ]
-```
-
-You must be approved by admin into the Gitlab account so your public key needs to have an access to the above repo.
-
-After that just simply add the following line to the composer required packages
-
-``` json
-"rentalmanager/amenities": "1.1.*"
-```
-
-After that run the 
-
-``` bash
-$ composer update
+```bash
+composer require rentalmanager/amenities
 ```
 
 ### Configuration
