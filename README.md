@@ -37,27 +37,7 @@ you can just simply run the
 $ php artisan rm:setup-amenities
 ```
 
-We assume you have already installed the Base package, so then just add traits automagically
-
-```bash
-$ php artisan rm:add-amenitable-trait
-```
-
 Thats it...
-
-### Seed
-
-This package provides some of the default data. You must seed them to your database.
-
-You can publish seeder with the following command (it's actually separate function from the setup):
-
-``` bash
-$ php artisan rm:seeder-amenities
-```
-
-The above command will create the propeller seeder class.
-
-After you publish the seeder make sure you dump autoload of the composer cache, how your newly seeder class will be discovered.
 
 ``` bash
 $ composer dump-autoload

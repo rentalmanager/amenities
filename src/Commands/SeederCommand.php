@@ -1,10 +1,7 @@
 <?php
 namespace RentalManager\Amenities\Commands;
 
-
-
 use Illuminate\Console\Command;
-use Illuminate\Support\Facades\Config;
 
 class SeederCommand extends Command
 {
@@ -55,7 +52,7 @@ class SeederCommand extends Command
      */
     protected function createSeeder()
     {
-        $amenity = Config::get('amenities.models.amenity', 'App\RentalManager\AddOns\Amenity');
+        $amenity = 'App\RentalManager\AddOns\Amenity';
 
         $output = $this->laravel->view->make('amenities::seeder')->with(compact([
             'amenity'

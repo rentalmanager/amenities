@@ -26,7 +26,6 @@ class AmenitiesServiceProvider extends ServiceProvider
      * @var array
      */
     protected $commands = [
-        'Migration' => 'command.amenities.migration',
         'MakeAmenity' => 'command.amenities.amenity',
         'SetupModels' => 'command.amenities.setup-models',
         'Setup' => 'command.amenities.setup',
@@ -46,9 +45,10 @@ class AmenitiesServiceProvider extends ServiceProvider
 
         // Publish the config files
         $this->publishes([
-            __DIR__.'/../config/amenities.php' => config_path('amenities.php'),
-            __DIR__.'/../config/amenities_seeder.php' => config_path('amenities_seeder.php')
+            __DIR__.'/../config/amenities.php' => config_path('amenities.php')
         ], 'amenities');
+
+        $this->loadMigrationsFrom(__DIR__.'/../migrations');
     }
 
     /**
@@ -91,13 +91,6 @@ class AmenitiesServiceProvider extends ServiceProvider
             call_user_func_array([$this, $method], []);
         }
         $this->commands(array_values($this->commands));
-    }
-
-    protected function registerMigrationCommand()
-    {
-        $this->app->singleton('command.amenities.migration', function () {
-            return new \RentalManager\Amenities\Commands\MigrationCommand();
-        });
     }
 
     protected function registerSeederCommand()

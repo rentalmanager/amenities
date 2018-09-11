@@ -12,7 +12,7 @@ class MakeAmenityCommand extends GeneratorCommand
      *
      * @var string
      */
-    protected $name = 'rm:amenity';
+    protected $name = 'rm:model-amenity';
 
     /**
      * The console command description.
@@ -46,7 +46,7 @@ class MakeAmenityCommand extends GeneratorCommand
      */
     protected function getNameInput()
     {
-        return Config::get('amenities.models.amenity', 'Amenity');
+        return 'App\RentalManager\AddOns\Amenity';
     }
 
     /**

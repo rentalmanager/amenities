@@ -2,13 +2,11 @@
 namespace RentalManager\Amenities\Traits;
 
 
-use Illuminate\Support\Facades\Config;
-
 /**
  * Trait AmenitiesAmenityTrait
  * @package RentalManager\Amenities\Traits
  */
-trait AmenitiesAmenityTrait
+trait RMAmenityTrait
 {
     /**
      * Always set as the json encoded string
@@ -85,7 +83,7 @@ trait AmenitiesAmenityTrait
      */
     public function associatedProperties()
     {
-        return $this->getMorphByRelation('property');
+        return $this->getMorphByRelation('App\RentalManager\Main\Property');
     }
 
 
@@ -96,7 +94,7 @@ trait AmenitiesAmenityTrait
      */
     public function associatedUnits()
     {
-        return $this->getMorphByRelation('unit');
+        return $this->getMorphByRelation('App\RentalManager\Main\Unit');
     }
 
     /**
@@ -107,10 +105,10 @@ trait AmenitiesAmenityTrait
     public function getMorphByRelation($relationship)
     {
         return $this->morphedByMany(
-            Config::get('base.models')[$relationship],
+            $relationship,
             'node',
-            Config::get('amenities.tables.amenity_nodes'),
-            Config::get('amenities.foreign_keys.amenity'),
+            'amenity_node',
+            'amenity_id',
             'node_id'
         );
     }

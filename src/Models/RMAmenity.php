@@ -2,8 +2,7 @@
 namespace RentalManager\Amenities\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Facades\Config;
-use RentalManager\Amenities\Traits\AmenitiesAmenityTrait;
+use RentalManager\Amenities\Traits\RMAmenityTrait;
 
 /**
  * Created by PhpStorm.
@@ -13,10 +12,10 @@ use RentalManager\Amenities\Traits\AmenitiesAmenityTrait;
  * @author Goran Krgovic <goran@dashlocal.com>
  */
 
-class AmenitiesAmenity extends Model
+class RMAmenity extends Model
 {
 
-    use AmenitiesAmenityTrait;
+    use RMAmenityTrait;
 
     /**
      * The database table used by the model.
@@ -34,6 +33,6 @@ class AmenitiesAmenity extends Model
     public function __construct(array $attributes = [])
     {
         parent::__construct($attributes);
-        $this->table = Config::get('amenities.tables.amenities');
+        $this->table = 'amenities';
     }
 }

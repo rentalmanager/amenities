@@ -28,8 +28,9 @@ class SetupCommand extends Command
      * @var array
      */
     protected $calls = [
-        'rm:migrate-amenities' => 'Migrate the tables',
         'rm:setup-models-amenities' => 'Setup the models',
+        'rm:seeder-amenities' => 'Setup the seeder',
+        'rm:add-amenitable-trait' => 'Add amenitable trait'
     ];
 
     /**

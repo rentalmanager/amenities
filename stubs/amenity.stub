@@ -1,9 +1,9 @@
 <?php
 namespace DummyNamespace;
 
-use RentalManager\Amenities\Models\AmenitiesAmenity;
+use RentalManager\Amenities\Models\RMAmenity;
 
-class DummyClass extends AmenitiesAmenity
+class DummyClass extends RMAmenity
 {
 
      /**

@@ -32,7 +32,7 @@ class SetupModelsCommand extends Command
      * @var array
      */
     protected $calls = [
-        'rm:amenity' => 'Creating the amenity model',
+        'rm:model-amenity' => 'Creating the amenity model',
     ];
 
     /**

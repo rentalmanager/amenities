@@ -1,11 +1,6 @@
 <?php
 namespace RentalManager\Amenities\Traits;
 
-use Illuminate\Support\Facades\Config;
-use Illuminate\Support\Str;
-use RentalManager\RelationHelper\Facades\RelationHelper;
-use InvalidArgumentException;
-
 /**
  * Created by PhpStorm.
  * Date: 7/3/18
@@ -122,11 +117,11 @@ trait Amenitable
     public function amenities()
     {
         return $this->morphToMany(
-            Config::get('amenities.models.amenity'), // model
+            'App\RentalManager\AddOns\Amenity', // model
             'node', // node
-            Config::get('amenities.tables.amenity_nodes'), // table
+            'amenity_node', // table
             'node_id',
-            Config::get('amenities.foreign_keys.amenity')
+            'amenity_id'
         );
     }
 
@@ -142,15 +137,7 @@ trait Amenitable
      */
     private function attachAmenitableModel($relationship, $object)
     {
-        if ( !RelationHelper::isValidRelationship($relationship) )
-        {
-            throw new InvalidArgumentException;
-        }
-
         $attributes = [];
-        $objectType = Str::singular($relationship);
-        $object = RelationHelper::getIdFor($object, $objectType, 'amenities');
-
         $this->$relationship()->attach(
             $object,
             $attributes
@@ -168,16 +155,7 @@ trait Amenitable
      */
     private function detachAmenitableModel($relationship, $object)
     {
-        if ( !RelationHelper::isValidRelationship($relationship) )
-        {
-            throw new InvalidArgumentException;
-        }
-
-        $objectType = Str::singular($relationship);
         $relationshipQuery = $this->$relationship();
-
-        $object = RelationHelper::getIdFor($object, $objectType, 'amenities');
-
         $relationshipQuery->detach($object);
 
         return $this;
@@ -193,22 +171,9 @@ trait Amenitable
      */
     public function syncAmenitableModels($relationship, $objects, $detaching = true)
     {
-        if ( !RelationHelper::isValidRelationship($relationship) )
-        {
-            throw new InvalidArgumentException;
-        }
-
-        $objectType = Str::singular($relationship);
-        $mappedObjects = [];
-
-        foreach ( $objects as $object )
-        {
-            $mappedObjects[] = RelationHelper::getIdFor($object, $objectType, 'amenities');
-        }
-
         $relationshipToSync = $this->$relationship();
 
-        $result = $relationshipToSync->sync($mappedObjects, $detaching);
+        $result = $relationshipToSync->sync($objects, $detaching);
 
         return $this;
     }

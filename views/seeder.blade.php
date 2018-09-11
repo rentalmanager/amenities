@@ -17,7 +17,7 @@ class RentalManagerAmenitiesSeeder extends Seeder
         $this->truncatePropellerTables();
 
         // Amenities data
-        $amenities = config('amenities_seeder.data');
+        $amenities = config('amenities.seeder.data');
 
         foreach ($amenities as $key => $data) {
             // create a new amenity
